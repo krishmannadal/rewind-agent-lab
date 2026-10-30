@@ -134,7 +134,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
 
 *Goal: Provide rigorous ablation analysis comparing baseline, single-policy, combined, and baseline heuristics.*
 
-- [ ] **TASK-501: Ablation Matrix Calculator**
+- [x] **TASK-501: Ablation Matrix Calculator**
   - **Files:** `lib/evaluation/ablation.mjs`, `test/ablation.test.mjs`
   - **Scope:** Calculate full ablation: `[none]`, individual policies (`freshness`, `retry`, `corroborate`, `scope`, `abstain`), minimal search result, and all policies enabled. Compute success rate, regression rate, extra tool calls, and utility score.
   - **Acceptance Criteria:** Produces structured table mapping every policy combination to its utility trade-offs.
@@ -191,6 +191,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 6 | TASK-302 | Paraphrased prompt injection variations | `7be676c` | `npm test` (30 passed), syntax check | 2026-10-31 |
 | 7 | TASK-401 | Evaluation split partitioner & leak validation | `7962ad6` | `npm test` (32 passed), syntax check | 2026-10-31 |
 | 8 | TASK-402 | Held-out benchmark runner & API endpoint | `93e3ffc` | `npm test` (34 passed), syntax check | 2026-10-31 |
+| 9 | TASK-501 | Ablation matrix calculator & utility scoring | `1bb76a2` | `npm test` (35 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
