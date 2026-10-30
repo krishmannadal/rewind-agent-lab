@@ -152,7 +152,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
 
 *Goal: Standardize execution trace representations for cross-agent framework compatibility.*
 
-- [ ] **TASK-601: Open Agent Trace (OAT) v1 Schema Definition**
+- [x] **TASK-601: Open Agent Trace (OAT) v1 Schema Definition**
   - **Files:** `lib/trace/schema.mjs`, `test/trace_schema.test.mjs`
   - **Scope:** Implement schema validator for portable traces: metadata (id, timestamp, environment, model), events (agent_start, tool_call, tool_result, policy_intervention, decision, validation), and provenance checksum.
   - **Acceptance Criteria:** Strict validation function `validateTrace(traceObject)` compliant with JSON Schema draft-07.
@@ -193,6 +193,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 8 | TASK-402 | Held-out benchmark runner & API endpoint | `93e3ffc` | `npm test` (34 passed), syntax check | 2026-10-31 |
 | 9 | TASK-501 | Ablation matrix calculator & utility scoring | `1bb76a2` | `npm test` (35 passed), syntax check | 2026-10-31 |
 | 10 | TASK-502 | Expose ablation API endpoint & UI matrix | `65aa8ba` | `npm test` (35 passed), syntax check | 2026-10-31 |
+| 11 | TASK-601 | Open Agent Trace (OAT v1) schema & converter | `702548b` | `npm test` (37 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
