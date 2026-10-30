@@ -6,10 +6,18 @@ test('each fault causes its documented reference failure, and matched clean cont
   for (const seed of [0, 1, 42, 104, 999999]) for (const scenario of SCENARIOS) {
     const bad = execute({ scenario: scenario.id, seed });
     assert.equal(bad.pass, false, `${scenario.id}/${seed} must fail under the fault`);
+    assert.ok(Array.isArray(bad.violations));
+    assert.ok(bad.violations.length > 0);
+    assert.equal(typeof bad.score, 'number');
+
     const clean = execute({ scenario: scenario.id, seed, fault: false });
     assert.equal(clean.pass, true, `${scenario.id}/${seed} must pass without the fault`);
+    assert.equal(clean.score, 1.0);
+    assert.equal(clean.violations.length, 0);
+
     const fixed = compare({ scenario: scenario.id, seed, policies: [scenario.required] });
     assert.equal(fixed.repaired.pass, true);
+    assert.equal(fixed.repaired.score, 1.0);
     assert.equal(fixed.control.regression, false);
     assert.ok(fixed.divergence.step > 1);
   }
