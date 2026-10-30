@@ -116,7 +116,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
 
 *Goal: Prevent overfitting repair policies to test fixtures by instituting held-out splits.*
 
-- [ ] **TASK-401: Evaluation Split Partitioner**
+- [x] **TASK-401: Evaluation Split Partitioner**
   - **Files:** `lib/evaluation/splits.mjs`, `test/splits.test.mjs`
   - **Scope:** Partition scenarios and seed variants into `development` (used for policy search) and `held_out` (validation suite to evaluate generalization).
   - **Acceptance Criteria:** `getSplit('development')` and `getSplit('held_out')` return non-overlapping seed/scenario configurations.
@@ -189,6 +189,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 4 | TASK-202 | Integrate contract engine into reference agent | `4624ea5` | `npm test` (24 passed), syntax check | 2026-10-31 |
 | 5 | TASK-301 | Parameterized fault severity in fixtures | `6db62dc` | `npm test` (27 passed), syntax check | 2026-10-31 |
 | 6 | TASK-302 | Paraphrased prompt injection variations | `7be676c` | `npm test` (30 passed), syntax check | 2026-10-31 |
+| 7 | TASK-401 | Evaluation split partitioner & leak validation | `7962ad6` | `npm test` (32 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
