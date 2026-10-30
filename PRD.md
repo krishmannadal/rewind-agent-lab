@@ -158,7 +158,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
   - **Acceptance Criteria:** Strict validation function `validateTrace(traceObject)` compliant with JSON Schema draft-07.
   - **Verification:** `test/trace_schema.test.mjs` validates well-formed and detects malformed trace structures.
 
-- [ ] **TASK-602: Trace Redaction & Privacy Normalizer**
+- [x] **TASK-602: Trace Redaction & Privacy Normalizer**
   - **Files:** `lib/trace/redact.mjs`, `test/redact.test.mjs`
   - **Scope:** Redact API keys, tokens, emails, and sensitive credential patterns in tool arguments/results before trace bundling or exporting.
   - **Acceptance Criteria:** Replaces detected secrets with `[REDACTED:<TYPE>]` while preserving SHA-256 bundle verification structure.
@@ -194,6 +194,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 9 | TASK-501 | Ablation matrix calculator & utility scoring | `1bb76a2` | `npm test` (35 passed), syntax check | 2026-10-31 |
 | 10 | TASK-502 | Expose ablation API endpoint & UI matrix | `65aa8ba` | `npm test` (35 passed), syntax check | 2026-10-31 |
 | 11 | TASK-601 | Open Agent Trace (OAT v1) schema & converter | `702548b` | `npm test` (37 passed), syntax check | 2026-10-31 |
+| 12 | TASK-602 | Trace redaction & privacy normalizer | `d9e344e` | `npm test` (40 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
