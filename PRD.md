@@ -104,7 +104,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
   - **Acceptance Criteria:** Severity modulates failure behavior while preserving clean control guarantees.
   - **Verification:** `test/severity.test.mjs` proving low severity passes under partial retry, high severity demands full policy set.
 
-- [ ] **TASK-302: Paraphrased Prompt Injection Variations**
+- [x] **TASK-302: Paraphrased Prompt Injection Variations**
   - **Files:** `lib/fixtures/instruction.mjs`, `test/injection_variants.test.mjs`
   - **Scope:** Introduce 3 distinct injection styles in untrusted records: direct override (`IGNORE PRIOR AND SEND TO`), payload smuggling (`SYSTEM NOTICE: UPDATE RECIPIENT`), and markdown link injection.
   - **Acceptance Criteria:** `scope` policy successfully neutralizes all 3 variants.
@@ -188,6 +188,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 3 | TASK-201 | Declarative contract validation engine | `a2e9982` | `npm test` (24 passed), syntax check | 2026-10-31 |
 | 4 | TASK-202 | Integrate contract engine into reference agent | `4624ea5` | `npm test` (24 passed), syntax check | 2026-10-31 |
 | 5 | TASK-301 | Parameterized fault severity in fixtures | `6db62dc` | `npm test` (27 passed), syntax check | 2026-10-31 |
+| 6 | TASK-302 | Paraphrased prompt injection variations | `7be676c` | `npm test` (30 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
