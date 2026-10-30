@@ -62,7 +62,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
 
 *Goal: Extract hard-coded fixture environments from `lib/engine.mjs` into declarative, schema-validated scenario definitions.*
 
-- [ ] **TASK-101: Create Declarative Fixture Schema & Loader**
+- [x] **TASK-101: Create Declarative Fixture Schema & Loader**
   - **Files:** `lib/fixtures/schema.mjs`, `lib/fixtures/loader.mjs`, `test/fixtures.test.mjs`
   - **Scope:** Define pure data specifications for scenarios (id, title, description, faultType, defaultSeeds, mockTools). Implement validation ensuring each fixture declares required mock responses and clean baselines.
   - **Acceptance Criteria:** `loader.loadFixture(id)` loads and validates fixture definitions; `npm test` passes.
@@ -183,6 +183,7 @@ A task is considered complete **only** when all of the following conditions are 
 | Iteration | Task ID | Description | Commit Hash | Verified By | Date |
 |:---:|:---:|:---|:---:|:---:|:---:|
 | 0 | INIT | Initial baseline verification, git setup & CI | `84850a8` | `npm test` (14 passed) | 2026-10-30 |
+| 1 | TASK-101 | Declarative fixture schema and registry loader | `b189293` | `npm test` (19 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
