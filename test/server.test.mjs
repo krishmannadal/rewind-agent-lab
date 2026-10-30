@@ -15,6 +15,9 @@ test('HTTP interface, security boundaries, and MCP lifecycle work end to end', a
   const cfg = await (await fetch(base + '/api/config')).json(); assert.equal(cfg.scenarios.length, 4); assert.equal(cfg.policies.length, 5);
   const result = await (await post('/api/compare', { scenario: 'stale', policies: ['freshness'] })).json();
   assert.equal(result.baseline.pass, false); assert.equal(result.repaired.pass, true);
+  const benchRes = await (await post('/api/benchmark', { policies: ['freshness'] })).json();
+  assert.equal(benchRes.development.total, 12);
+  assert.equal(benchRes.heldOut.total, 16);
   const { integrity, ...payload } = result;
   assert.equal(createHash('sha256').update(JSON.stringify(payload)).digest('hex'), integrity.digest);
   assert.equal((await post('/api/run', { scenario: 'unknown' })).status, 400);

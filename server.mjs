@@ -5,10 +5,17 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { SCENARIOS, POLICIES, execute, compare, searchRepairs, evaluateSuite, validateConfig, ENGINE_VERSION } from './lib/engine.mjs';
 import { executeLive, compareLive, listModels } from './lib/live.mjs';
+import { runBenchmark } from './lib/evaluation/runner.mjs';
 
 const ROOT = fileURLToPath(new URL('./public/', import.meta.url)).replace(/[\\/]+$/, '');
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'application/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' };
-const endpoints = { '/api/run': execute, '/api/compare': compare, '/api/search': searchRepairs, '/api/suite': x => { const c = validateConfig(x); return evaluateSuite(c.policies, c.seed); } };
+const endpoints = {
+  '/api/run': execute,
+  '/api/compare': compare,
+  '/api/search': searchRepairs,
+  '/api/suite': x => { const c = validateConfig(x); return evaluateSuite(c.policies, c.seed); },
+  '/api/benchmark': x => { const c = validateConfig(x); return runBenchmark(c.policies, c.seed); }
+};
 const schema = { type: 'object', properties: { scenario: { type: 'string', enum: SCENARIOS.map(s => s.id) }, seed: { type: 'integer', minimum: 0, maximum: 999999 }, fault: { type: 'boolean' }, policies: { type: 'array', items: { type: 'string', enum: POLICIES.map(p => p.id) } }, budget: { type: 'integer', minimum: 0, maximum: 4 }, wholeSuite: { type: 'boolean' } }, additionalProperties: false };
 const mcpTools = [['rewind_run', 'Execute a deterministic reference agent in an isolated seeded fixture.'], ['rewind_compare', 'Compare a baseline and repaired run with a matched clean control.'], ['rewind_search', 'Search 32 policy subsets for a minimal repair with zero control regressions.'], ['rewind_suite', 'Run 12 fault cases and 12 clean controls.']].map(([name, description]) => ({ name, description, inputSchema: schema, annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false } }));
 let requests = 0, windowStart = Date.now(), activeModels = 0;
