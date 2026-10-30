@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm test && npm run check",
+  "outputDirectory": "public",
+  "functions": { "api/handler.mjs": { "maxDuration": 240 } },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/handler?_rewind=:path*" },
+    { "source": "/health", "destination": "/api/handler?_rewind=health" },
+    { "source": "/mcp", "destination": "/api/handler?_rewind=mcp" },
+    { "source": "/lab", "destination": "/index.html" }
+  ],
+  "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "no-referrer" },
+      { "key": "X-Frame-Options", "value": "DENY" },
+      { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }
+    ] }
+  ]
+}

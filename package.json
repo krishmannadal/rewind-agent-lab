@@ -1,0 +1,9 @@
+{
+  "name": "rewind-agent-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A reproducible agent reliability lab with constrained counterfactual repair search.",
+  "engines": { "node": ">=22" },
+  "scripts": { "dev": "node server.mjs", "start": "node server.mjs", "test": "node --test", "check": "node --check server.mjs && node --check lib/engine.mjs && node --check lib/live.mjs && node --check api/handler.mjs && node --check public/app.js" }
+}

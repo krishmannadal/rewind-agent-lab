@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { createServer } from '../server.mjs';
+
+test('HTTP interface, security boundaries, and MCP lifecycle work end to end', async t => {
+  const server = createServer();
+  await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const post = (route, data, headers = {}) => fetch(base + route, { method: 'POST', headers: { 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(data) });
+  const health = await fetch(base + '/health'); assert.equal(health.status, 200); assert.equal((await health.json()).status, 'ok');
+  const root = await fetch(base); assert.equal(root.status, 200); assert.match(await root.text(), /Find the moment/); assert.ok(root.headers.get('content-security-policy').includes("frame-ancestors 'none'"));
+  const css = await fetch(base + '/style.css'); assert.equal(css.status, 200); assert.match(css.headers.get('content-type'), /text\/css/);
+  const cfg = await (await fetch(base + '/api/config')).json(); assert.equal(cfg.scenarios.length, 4); assert.equal(cfg.policies.length, 5);
+  const result = await (await post('/api/compare', { scenario: 'stale', policies: ['freshness'] })).json();
+  assert.equal(result.baseline.pass, false); assert.equal(result.repaired.pass, true);
+  const { integrity, ...payload } = result;
+  assert.equal(createHash('sha256').update(JSON.stringify(payload)).digest('hex'), integrity.digest);
+  assert.equal((await post('/api/run', { scenario: 'unknown' })).status, 400);
+  assert.equal((await post('/api/run', {}, { Origin: 'https://hostile.example' })).status, 403);
+  assert.equal((await fetch(base + '/api/run')).status, 405);
+  assert.equal((await fetch(base + '/no-such-file')).status, 404);
+  assert.equal((await post('/api/run', { policies: ['x'.repeat(70000)] })).status, 413);
+  const init = await (await post('/mcp', { jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'test', version: '1' } } })).json();
+  assert.equal(init.result.serverInfo.name, 'rewind-agent-lab');
+  assert.equal((await post('/mcp', { jsonrpc: '2.0', method: 'notifications/initialized' })).status, 202);
+  const tools = await (await post('/mcp', { jsonrpc: '2.0', id: 2, method: 'tools/list' })).json(); assert.equal(tools.result.tools.length, 4);
+  const run = await (await post('/mcp', { jsonrpc: '2.0', id: 3, method: 'tools/call', params: { name: 'rewind_search', arguments: { scenario: 'injection', budget: 0 } } })).json();
+  assert.equal(JSON.parse(run.result.content[0].text).best.policies[0], 'scope');
+  assert.equal((await fetch(base + '/mcp')).status, 405);
+});
