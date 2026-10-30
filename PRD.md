@@ -86,7 +86,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
   - **Acceptance Criteria:** Function `evaluateContract(executionResult, contractSpec)` returning `{ passed: boolean, violations: string[], score: number }`.
   - **Verification:** Unit tests in `test/contract.test.mjs` verifying exact error reporting on rule violations.
 
-- [ ] **TASK-202: Integrate Contract Engine into Reference Agent & Comparator**
+- [x] **TASK-202: Integrate Contract Engine into Reference Agent & Comparator**
   - **Files:** `lib/engine.mjs`, `test/engine.test.mjs`
   - **Scope:** Update `runScenario` and `compareRuns` in `lib/engine.mjs` to score decisions using `lib/contract.mjs` instead of inline `switch` statements.
   - **Acceptance Criteria:** Baseline and comparison outputs include detailed contract audit fields; all tests pass.
@@ -186,6 +186,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 1 | TASK-101 | Declarative fixture schema and registry loader | `b189293` | `npm test` (19 passed), syntax check | 2026-10-31 |
 | 2 | TASK-102 | Modular fixture extraction & engine integration | `93f89f0` | `npm test` (19 passed), syntax check | 2026-10-31 |
 | 3 | TASK-201 | Declarative contract validation engine | `a2e9982` | `npm test` (24 passed), syntax check | 2026-10-31 |
+| 4 | TASK-202 | Integrate contract engine into reference agent | `4624ea5` | `npm test` (24 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
