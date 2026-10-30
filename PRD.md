@@ -140,7 +140,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
   - **Acceptance Criteria:** Produces structured table mapping every policy combination to its utility trade-offs.
   - **Verification:** Automated unit test confirming mathematical consistency across matrix outputs.
 
-- [ ] **TASK-502: Expose Ablation Reporting via API & CLI**
+- [x] **TASK-502: Expose Ablation Reporting via API & CLI**
   - **Files:** `server.mjs`, `public/app.js`, `test/server.test.mjs`
   - **Scope:** Expose `POST /api/ablation` endpoint and render an Ablation Summary Table in the UI Workbench.
   - **Acceptance Criteria:** UI dynamically renders the ablation matrix with clean visual indicators for Pareto-optimal policies.
@@ -192,6 +192,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 7 | TASK-401 | Evaluation split partitioner & leak validation | `7962ad6` | `npm test` (32 passed), syntax check | 2026-10-31 |
 | 8 | TASK-402 | Held-out benchmark runner & API endpoint | `93e3ffc` | `npm test` (34 passed), syntax check | 2026-10-31 |
 | 9 | TASK-501 | Ablation matrix calculator & utility scoring | `1bb76a2` | `npm test` (35 passed), syntax check | 2026-10-31 |
+| 10 | TASK-502 | Expose ablation API endpoint & UI matrix | `65aa8ba` | `npm test` (35 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
