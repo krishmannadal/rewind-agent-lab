@@ -98,7 +98,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
 
 *Goal: Move beyond single fixed fault manifestations by parameterizing severity and prompt structures.*
 
-- [ ] **TASK-301: Parameterized Fault Severity in Fixtures**
+- [x] **TASK-301: Parameterized Fault Severity in Fixtures**
   - **Files:** `lib/fixtures/stale.mjs`, `lib/fixtures/timeout.mjs`, `lib/engine.mjs`, `test/severity.test.mjs`
   - **Scope:** Add `severity` parameter (`low`, `medium`, `high`) to scenario config. For stale policy: variation in expiry timedelta. For timeout: intermittent vs persistent dropouts.
   - **Acceptance Criteria:** Severity modulates failure behavior while preserving clean control guarantees.
@@ -187,6 +187,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 2 | TASK-102 | Modular fixture extraction & engine integration | `93f89f0` | `npm test` (19 passed), syntax check | 2026-10-31 |
 | 3 | TASK-201 | Declarative contract validation engine | `a2e9982` | `npm test` (24 passed), syntax check | 2026-10-31 |
 | 4 | TASK-202 | Integrate contract engine into reference agent | `4624ea5` | `npm test` (24 passed), syntax check | 2026-10-31 |
+| 5 | TASK-301 | Parameterized fault severity in fixtures | `6db62dc` | `npm test` (27 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
