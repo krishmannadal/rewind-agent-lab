@@ -122,7 +122,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
   - **Acceptance Criteria:** `getSplit('development')` and `getSplit('held_out')` return non-overlapping seed/scenario configurations.
   - **Verification:** `test/splits.test.mjs` confirming zero data leakage across partitions.
 
-- [ ] **TASK-402: Held-Out Benchmark Evaluation Runner**
+- [x] **TASK-402: Held-Out Benchmark Evaluation Runner**
   - **Files:** `lib/evaluation/runner.mjs`, `server.mjs`, `test/runner.test.mjs`
   - **Scope:** Add API route `POST /api/benchmark` that takes a discovered policy set and tests it against the held-out suite, reporting generalization delta.
   - **Acceptance Criteria:** Clear reporting of `generalizationRate`, `heldOutRegressions`, and `costDelta`.
@@ -190,6 +190,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 5 | TASK-301 | Parameterized fault severity in fixtures | `6db62dc` | `npm test` (27 passed), syntax check | 2026-10-31 |
 | 6 | TASK-302 | Paraphrased prompt injection variations | `7be676c` | `npm test` (30 passed), syntax check | 2026-10-31 |
 | 7 | TASK-401 | Evaluation split partitioner & leak validation | `7962ad6` | `npm test` (32 passed), syntax check | 2026-10-31 |
+| 8 | TASK-402 | Held-out benchmark runner & API endpoint | `93e3ffc` | `npm test` (34 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
