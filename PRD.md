@@ -80,7 +80,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
 
 *Goal: Replace implicit scenario pass/fail checks with formal, declarative contract validation rules.*
 
-- [ ] **TASK-201: Implement Contract Validation Engine**
+- [x] **TASK-201: Implement Contract Validation Engine**
   - **Files:** `lib/contract.mjs`, `test/contract.test.mjs`
   - **Scope:** Create a contract evaluator supporting assertions: `expectedDecision`, `forbiddenActions`, `requiredEvidenceKeys`, `maxToolCalls`, and `allowedRecipients`.
   - **Acceptance Criteria:** Function `evaluateContract(executionResult, contractSpec)` returning `{ passed: boolean, violations: string[], score: number }`.
@@ -185,6 +185,7 @@ A task is considered complete **only** when all of the following conditions are 
 | 0 | INIT | Initial baseline verification, git setup & CI | `84850a8` | `npm test` (14 passed) | 2026-10-30 |
 | 1 | TASK-101 | Declarative fixture schema and registry loader | `b189293` | `npm test` (19 passed), syntax check | 2026-10-31 |
 | 2 | TASK-102 | Modular fixture extraction & engine integration | `93f89f0` | `npm test` (19 passed), syntax check | 2026-10-31 |
+| 3 | TASK-201 | Declarative contract validation engine | `a2e9982` | `npm test` (24 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
