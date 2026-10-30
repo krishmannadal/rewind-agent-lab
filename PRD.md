@@ -68,7 +68,7 @@ EPIC 6: Framework-Independent Trace Schema & Export
   - **Acceptance Criteria:** `loader.loadFixture(id)` loads and validates fixture definitions; `npm test` passes.
   - **Verification:** Unit test in `test/fixtures.test.mjs` asserting schema rejection for invalid fixtures.
 
-- [ ] **TASK-102: Migrate Existing 4 Synthetic Scenarios to Modular Fixtures**
+- [x] **TASK-102: Migrate Existing 4 Synthetic Scenarios to Modular Fixtures**
   - **Files:** `lib/fixtures/stale.mjs`, `lib/fixtures/timeout.mjs`, `lib/fixtures/conflict.mjs`, `lib/fixtures/instruction.mjs`, `lib/engine.mjs`
   - **Scope:** Extract the 4 existing synthetic scenarios (`stale`, `transient`, `conflict`, `untrusted`) into isolated fixture modules conforming to the new loader schema without breaking `engine.mjs`.
   - **Acceptance Criteria:** `lib/engine.mjs` imports from `lib/fixtures/`; all 14 baseline tests continue to pass.
@@ -184,6 +184,7 @@ A task is considered complete **only** when all of the following conditions are 
 |:---:|:---:|:---|:---:|:---:|:---:|
 | 0 | INIT | Initial baseline verification, git setup & CI | `84850a8` | `npm test` (14 passed) | 2026-10-30 |
 | 1 | TASK-101 | Declarative fixture schema and registry loader | `b189293` | `npm test` (19 passed), syntax check | 2026-10-31 |
+| 2 | TASK-102 | Modular fixture extraction & engine integration | `93f89f0` | `npm test` (19 passed), syntax check | 2026-10-31 |
 <!-- Next Ralph iteration appends here -->
 
 ---
